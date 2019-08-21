@@ -20,11 +20,19 @@ def selection_sort(arr):
 
 
 def bubble_sort(arr):
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(1, len(arr)):
+            if arr[i] < arr[i - 1]:
+                arr[i], arr[i-1] = arr[i-1], arr[i]
+                swapped = True
 
     return arr
 
-
 # STRETCH: implement the Count Sort function below
+
+
 def count_sort(arr, maximum=-1):
 
     return arr
