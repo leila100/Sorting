@@ -1,4 +1,8 @@
+import random
+
 # TO-DO: Complete the selection_sort() function below
+
+
 def selection_sort(arr):
     # loop through n-1 elements
     for i in range(0, len(arr) - 1):
@@ -34,5 +38,20 @@ def bubble_sort(arr):
 
 
 def count_sort(arr, maximum=-1):
-
-    return arr
+    counts = []
+    output = []
+    if len(arr) == 0:
+        return arr
+    if maximum == -1:
+        maximum = max(arr)
+    for i in range(0, maximum+1):
+        counts.append(0)
+    for i in range(0, len(arr)):
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        counts[arr[i]] += 1
+    for i in range(0, len(counts)):
+        if counts[i] != 0:
+            for j in range(0, counts[i]):
+                output.append(i)
+    return output
