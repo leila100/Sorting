@@ -40,18 +40,52 @@ def merge_sort(arr):
 
 def merge_in_place(arr, start, mid, end):
     # TO-DO
+    i = start
+    j = mid + 1
 
+    # already sorted
+    if arr[mid] <= arr[j]:
+        return
+    while i <= mid and j <= end:
+        # already in right place
+        if arr[i] <= arr[j]:
+            i += 1
+        else:
+            value = arr[j]
+            index = j
+            # shift all numbers to the right
+            while index != i:
+                arr[index] = arr[index-1]
+                index -= 1
+            # Save value in right place
+            arr[i] = value
+            # Increment all indices after shift
+            i += 1
+            j += 1
+            mid += 1
     return arr
 
 
 def merge_sort_in_place(arr, l, r):
     # TO-DO
+    if len(arr) <= 1:
+        return arr
 
+    #  base case
+    if l >= r:
+        return arr
+
+    middle = l + (r - l) // 2
+
+    merge_sort_in_place(arr, l, middle)
+    merge_sort_in_place(arr, middle+1, r)
+    merge_in_place(arr, l, middle, r)
     return arr
-
 
 # STRETCH: implement the Timsort function below
 # hint: check out https://github.com/python/cpython/blob/master/Objects/listsort.txt
+
+
 def timsort(arr):
 
     return arr
